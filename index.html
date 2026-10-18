@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Crocchette: con mozzarella o senza?</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <header>
+      <h1>Crocchette: con mozzarella o senza?</h1>
+      <p id="riepilogo" class="riepilogo" aria-live="polite"></p>
+    </header>
+
+    <section class="strumenti" aria-label="Cerca e filtra">
+      <input id="cerca" type="search" placeholder="Cerca un bar o una città" autocomplete="off">
+      <div class="filtri" role="group" aria-label="Filtro mozzarella">
+        <button type="button" class="filtro attivo" data-filtro="tutti">Tutti</button>
+        <button type="button" class="filtro" data-filtro="si">Con mozzarella</button>
+        <button type="button" class="filtro" data-filtro="no">Senza</button>
+      </div>
+    </section>
+
+    <section aria-label="Elenco dei bar">
+      <p id="stato" class="stato">Carico i bar…</p>
+      <ul id="lista" class="lista"></ul>
+    </section>
+
+    <section class="aggiungi" aria-labelledby="titolo-form">
+      <h2 id="titolo-form">Aggiungi un bar</h2>
+      <form id="form">
+        <label>
+          Nome del bar
+          <input id="nome" name="nome" type="text" maxlength="80" required>
+        </label>
+        <label>
+          Città
+          <input id="citta" name="citta" type="text" maxlength="60">
+        </label>
+        <fieldset>
+          <legend>Le crocchette hanno la mozzarella?</legend>
+          <label class="scelta"><input type="radio" name="mozzarella" value="si" required> Sì, con mozzarella</label>
+          <label class="scelta"><input type="radio" name="mozzarella" value="no"> No, senza</label>
+        </fieldset>
+        <button id="invia" type="submit">Aggiungi bar</button>
+        <p id="esito" class="esito" role="status"></p>
+      </form>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

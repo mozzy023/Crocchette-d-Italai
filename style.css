@@ -1,0 +1,245 @@
+:root {
+  --sfondo: #e8eee9;
+  --superficie: #f7faf7;
+  --testo: #14231f;
+  --testo-tenue: #566660;
+  --bordo: #c5d0c9;
+  --crosta: #e0a526;
+  --crosta-scura: #8a5f00;
+  --verde: #1f5c4d;
+  --errore: #a3261c;
+  --raggio: 10px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --sfondo: #0f1a17;
+    --superficie: #17262b;
+    --testo: #eaf1ec;
+    --testo-tenue: #9fb1a8;
+    --bordo: #2c4039;
+    --crosta: #e8b43a;
+    --crosta-scura: #f0c96a;
+    --verde: #6fc3a8;
+    --errore: #ff8a7d;
+  }
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { color-scheme: light dark; }
+
+body {
+  margin: 0;
+  background: var(--sfondo);
+  color: var(--testo);
+  font-family: "Bricolage Grotesque", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 1.05rem;
+  line-height: 1.5;
+}
+
+main {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 2.5rem 1.25rem 4rem;
+}
+
+h1 {
+  margin: 0 0 0.5rem;
+  font-size: clamp(2.2rem, 8vw, 3.4rem);
+  font-weight: 800;
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+}
+
+h2 {
+  margin: 0 0 1rem;
+  font-size: 1.4rem;
+  font-weight: 800;
+}
+
+.riepilogo {
+  margin: 0 0 2rem;
+  color: var(--testo-tenue);
+}
+
+/* Cerca e filtri */
+.strumenti {
+  display: grid;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+
+input[type="search"],
+input[type="text"] {
+  width: 100%;
+  padding: 0.7rem 0.85rem;
+  border: 1.5px solid var(--bordo);
+  border-radius: var(--raggio);
+  background: var(--superficie);
+  color: inherit;
+  font: inherit;
+}
+
+.filtri {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.filtro {
+  padding: 0.4rem 0.9rem;
+  border: 1.5px solid var(--bordo);
+  border-radius: 999px;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+
+.filtro.attivo {
+  border-color: var(--crosta);
+  background: var(--crosta);
+  color: #1b1500;
+  font-weight: 600;
+}
+
+/* Lista */
+.lista {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.6rem;
+}
+
+.bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.85rem 1rem;
+  border: 1.5px solid var(--bordo);
+  border-left-width: 6px;
+  border-radius: var(--raggio);
+  background: var(--superficie);
+}
+
+.bar.si { border-left-color: var(--crosta); }
+.bar.no { border-left-color: var(--bordo); }
+
+.bar-nome {
+  margin: 0;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+.bar-citta {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--testo-tenue);
+}
+
+.etichetta {
+  flex-shrink: 0;
+  padding: 0.25rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.etichetta.si {
+  background: var(--crosta);
+  color: #1b1500;
+}
+
+.etichetta.no {
+  border: 1.5px solid var(--bordo);
+  color: var(--testo-tenue);
+}
+
+.stato {
+  margin: 0 0 1rem;
+  color: var(--testo-tenue);
+}
+
+.stato:empty { display: none; }
+
+/* Form */
+.aggiungi {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1.5px solid var(--bordo);
+}
+
+form {
+  display: grid;
+  gap: 1rem;
+}
+
+form label {
+  display: grid;
+  gap: 0.3rem;
+  font-weight: 600;
+}
+
+fieldset {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  display: grid;
+  gap: 0.4rem;
+}
+
+legend {
+  margin-bottom: 0.3rem;
+  padding: 0;
+  font-weight: 600;
+}
+
+label.scelta {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-weight: 400;
+}
+
+input[type="radio"] {
+  width: 1.15rem;
+  height: 1.15rem;
+  accent-color: var(--crosta);
+}
+
+button[type="submit"] {
+  justify-self: start;
+  padding: 0.75rem 1.4rem;
+  border: 0;
+  border-radius: var(--raggio);
+  background: var(--verde);
+  color: var(--superficie);
+  font: inherit;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+@media (prefers-color-scheme: dark) {
+  button[type="submit"] { color: #0f1a17; }
+}
+
+button[type="submit"]:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+.esito {
+  margin: 0;
+  min-height: 1.5em;
+  color: var(--verde);
+}
+
+.esito.errore { color: var(--errore); }
+
+:focus-visible {
+  outline: 3px solid var(--crosta);
+  outline-offset: 2px;
+}
